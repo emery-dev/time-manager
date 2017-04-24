@@ -1,0 +1,11 @@
+DROP DATABASE IF EXISTS todos;
+CREATE DATABASE todos;
+
+\c todos;
+
+CREATE TABLE todo (
+  ID SERIAL PRIMARY KEY,
+  times INTEGER,
+  position INTEGER,
+  todo VARCHAR
+);
