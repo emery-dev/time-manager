@@ -6,12 +6,19 @@ var options = {
 };
 
 var pgp = require('pg-promise')(options);
+// var db = pgp({
+//     host: 'localhost',
+//     port: 5432,
+//     database: 'todos',
+//     user: 'emeryandrew',
+//     password: 'password'
+// });
 var db = pgp({
-    host: 'localhost',
+    host: 'ec2-54-204-0-88.compute-1.amazonaws.com',
     port: 5432,
-    database: 'todos',
-    user: 'emeryandrew',
-    password: 'password'
+    database: 'd3kfgj5g8ds1fn',
+    user: 'rdcawzijsxueem',
+    password: '3d77bbab43a20d514b12f8481d322e830989fc94e4b83b2b76fc3155feb26cd0'
 });
 
 //Queries
