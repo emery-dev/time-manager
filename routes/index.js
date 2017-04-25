@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Daily Manager' });
 });
 
-var db = require('../db/queries');
+var db = require('./queries');
 
 router.get('/api/todos', db.getAllTodos);
 router.get('/api/todos/:id', db.getSingleTodo);
