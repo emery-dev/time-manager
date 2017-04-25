@@ -14,11 +14,11 @@ var pgp = require('pg-promise')(options);
 //     password: 'password'
 // });
 var db = pgp({
-    host: 'ec2-54-204-0-88.compute-1.amazonaws.com',
+    host: 'stampy.db.elephantsql.com',
     port: 5432,
-    database: 'd3kfgj5g8ds1fn',
-    user: 'rdcawzijsxueem',
-    password: '3d77bbab43a20d514b12f8481d322e830989fc94e4b83b2b76fc3155feb26cd0'
+    database: 'psearniw',
+    user: 'psearniw',
+    password: 'sMtNmSEHxRVsx4L6NerEoxNh_TVpxxCz'
 });
 
 //Queries
