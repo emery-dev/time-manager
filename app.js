@@ -3,12 +3,12 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var pgp = require('pg-promise');
+var cors = require('cors');
 var index = require('./routes/index');
 
 var app = express();
 
 const url = process.env.DATABASE_URL || `http://localhost:3001`;
-//const db = pgp({url});
 
 app.set('port', (process.env.PORT || 3001));
 
@@ -20,6 +20,7 @@ app.use(express.static('./build'));
 
 app.use(express.static(path.join(__dirname + '/public')));
 
+app.use(cors);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
