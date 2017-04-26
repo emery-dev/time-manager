@@ -34,7 +34,6 @@ class ToDoList extends Component {
   }
 
   handleUpdate(item, update) {
-    console.log(update);
     $.ajax({
       url: `../api/todos/${item}`,
       type: 'PUT',
@@ -50,7 +49,6 @@ class ToDoList extends Component {
   }
 
   render() {
-    console.log(this.props.items);
     var items = this.props.items.map((today) => {
       return (
         <ToDo key={today.id}
