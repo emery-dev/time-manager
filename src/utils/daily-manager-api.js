@@ -3,7 +3,8 @@ import { getIdToken } from './AuthService';
 
 var connectionString = '';
 
-const BASE_URL = process.env.PORT || 'http://localhost:3001';
+const BASE_URL = 'http://localhost:3001';
+const BASE_URL2 = process.env.PORT;
 
 export function getDailySchedule() {
   console.log(process.env.DATABASE_URL);
