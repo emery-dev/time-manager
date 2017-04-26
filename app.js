@@ -7,9 +7,9 @@ var index = require('./routes/index');
 
 var app = express();
 
-const url = process.env.DATABASE_URL || `postgress://localhost:3000`;
+const url = process.env.DATABASE_URL || `http://localhost:3001`;
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 3001));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('./build'));
@@ -23,6 +23,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', index); //Calling api routes through /
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname + '/public'));
+});
+
 pgp.defaults.ssl = true;
 pgp.connect(url, function(err, client) {
   if (err) throw err;
@@ -35,6 +39,5 @@ pgp.connect(url, function(err, client) {
     });
 });
 
-app.listen(app.get('port'), () => {
-  console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
-});
+app.listen(app.get('port'));
+console.log('server started on ' ${app.get('port')});

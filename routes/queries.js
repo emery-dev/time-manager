@@ -6,7 +6,7 @@ var options = {
 };
 
 var pgp = require('pg-promise')(options);
-var connectionString = 'postgres://rdcawzijsxueem:3d77bbab43a20d514b12f8481d322e830989fc94e4b83b2b76fc3155feb26cd0@ec2-54-204-0-88.compute-1.amazonaws.com:5432/d3kfgj5g8ds1fn';
+var connectionString = process.env.DATABASE_URL || 'postgress://localhost:3001';
 var db = pgp(connectionString);
 
 //Queries
