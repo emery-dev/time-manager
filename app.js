@@ -22,9 +22,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', index); //Calling api routes through /
-app.get('./today', (req, res) => {
-  res.sendFile()
-}
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname + '/public'));
