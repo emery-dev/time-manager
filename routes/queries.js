@@ -6,8 +6,22 @@ var options = {
 };
 
 var pgp = require('pg-promise')(options);
-var connectionString = 'postgres://rdcawzijsxueem:3d77bbab43a20d514b12f8481d322e830989fc94e4b83b2b76fc3155feb26cd0@ec2-54-204-0-88.compute-1.amazonaws.com:5432/d3kfgj5g8ds1fn' || 'postgress://localhost:3001';
-var db = pgp(connectionString);
+//var connectionString = 'postgres://rdcawzijsxueem:3d77bbab43a20d514b12f8481d322e830989fc94e4b83b2b76fc3155feb26cd0@ec2-54-204-0-88.compute-1.amazonaws.com:5432/d3kfgj5g8ds1fn' || 'postgress://localhost:3001';
+var db = pgp({
+  host: 'ec2-54-204-0-88.compute-1.amazonaws.com',
+  port: 5432,
+  database: 'd3kfgj5g8ds1fn',
+  user: 'rdcawzijsxueem',
+  password: '3d77bbab43a20d514b12f8481d322e830989fc94e4b83b2b76fc3155feb26cd0'
+});
+
+// var db = pgp({
+//   host: 'localhost',
+//   port: 5432,
+//   database: 'todos',
+//   user: 'emeryandrew',
+//   password: 'password'
+// });
 
 //Queries
 module.exports = {
