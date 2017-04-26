@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var pgp = require('pg');
+var pgp = require('pg-promise');
 var index = require('./routes/index');
 
 var app = express();
