@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getIdToken } from './AuthService';
 
-const BASE_URL = process.env.DATABASE_NAME || 'http://localhost:3000';
+const BASE_URL = process.env.PORT || 'http://localhost:3000';
 
 export function getDailySchedule() {
   const url = `${BASE_URL}/api/todos`;
