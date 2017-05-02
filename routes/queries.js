@@ -6,7 +6,8 @@ var options = {
 };
 
 var pgp = require('pg-promise')(options);
-//var connectionString = 'postgres://rdcawzijsxueem:3d77bbab43a20d514b12f8481d322e830989fc94e4b83b2b76fc3155feb26cd0@ec2-54-204-0-88.compute-1.amazonaws.com:5432/d3kfgj5g8ds1fn' || 'postgress://localhost:3001';
+//Come back uncomment here
+//Add to heroku postgres db color column
 var db = pgp({
   host: 'ec2-54-204-0-88.compute-1.amazonaws.com',
   port: 5432,
@@ -68,8 +69,8 @@ function getSingleTodo(req, res, next) {
 //POST
 function createTodo(req, res, next) {
   //handle timing
-  db.none('insert into todo(times, position, todo)' +
-      'values(${times}, ${position}, ${todo})',
+  db.none('insert into todo(times, position, todo, color)' +
+      'values(${times}, ${position}, ${todo}, ${color})',
     req.body)
     .then(function () {
       res.status(200)
@@ -85,8 +86,8 @@ function createTodo(req, res, next) {
 
 //UPDATE
 function updateTodo(req, res, next) {
-  db.none('update todo set times=$1, position=$2, todo=$3 where id=$4',
-    [req.body.times, req.body.position, req.body.todo, parseInt(req.params.id)])
+  db.none('update todo set times=$1, position=$2, todo=$3, color=$4 where id=$5',
+    [req.body.times, req.body.position, req.body.todo, req.body.color, parseInt(req.params.id)])
     .then(function () {
       res.status(200)
         .json({

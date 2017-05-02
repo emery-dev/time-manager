@@ -5,6 +5,7 @@ class ToDo extends Component {
   constructor(props) {
     super(props);
     this.state = { editMode: false,
+                   color: this.props.item.color, //need to change this to get from props.item
                    deltaPosition: {
                      x: 0, y: 0
                    }
@@ -12,6 +13,25 @@ class ToDo extends Component {
 
     this.handleDrag = this.handleDrag.bind(this);
     this.handleEditYPosition = this.handleEditYPosition.bind(this);
+  }
+
+  handleColorChange(name, e) {
+    this.setState({ color: e.target.value });
+
+    var id = this.props.item.id;
+    var position = this.props.item.position
+    var times = this.props.item.times;
+    var todo = this.props.item.todo;
+    var color = e.target.value //what we want to update
+
+    var item = { id: id,
+                 position: position,
+                 times: times,
+                 todo: todo,
+                 color: color };
+    var todo = { times: times, position: position, todo: todo, color: color };
+    this.props.handleUpdate(item, todo);
+
   }
 
   handleDrag(e, ui) {
@@ -33,12 +53,14 @@ class ToDo extends Component {
     var position = this.state.deltaPosition.y.toFixed(0);
     var times = this.props.item.times;
     var todo = this.props.item.todo;
+    var color = this.props.item.color;
 
     var item = { id: id,
                  position: position,
                  times: times,
-                 todo: todo };
-    var todo = { times: times, position: position, todo: todo };
+                 todo: todo,
+                 color: color };
+    var todo = { times: times, position: position, todo: todo, color: color };
     this.props.handleUpdate(item, todo);
   }
 
@@ -48,12 +70,14 @@ class ToDo extends Component {
       var position = this.state.deltaPosition.y; //should then translate on load?
       var times = this.refs.times.value;
       var todo = this.refs.todo.value;
+      var color = this.props.item.color;
 
       var item = { id: id,
                    position: position,
                    times: times,
-                   todo: todo };
-      var todo = { times: times, position: position, todo: todo };
+                   todo: todo,
+                   color: color };
+      var todo = { times: times, position: position, todo: todo, color: color };
       this.props.handleUpdate(item, todo);
 
       this.toggleEditMode();
@@ -75,9 +99,14 @@ class ToDo extends Component {
       <div className="todo-item col-sm-11">
         <div className="panel panel-primary">
             <strong className="cursor">
-            <div className="panel-heading">
+            <div className={`panel-heading ${this.state.color}`}>
               { time }
-              <button className="btn btn-danger" onClick={this.props.handleDelete}><span className="glyphicon glyphicon-remove"></span></button>
+               <button className="btn btn-danger" onClick={this.props.handleDelete}><span className="glyphicon glyphicon-remove"></span></button>
+              <div className="color-holder">
+                <button onClick={this.handleColorChange.bind(this, 'color')} className="btn btncolor color-red" value="color-red"></button>
+                <button onClick={this.handleColorChange.bind(this, 'color')} className="btn btncolor color-green" value="color-green"></button>
+                <button onClick={this.handleColorChange.bind(this, 'color')} className="btn btncolor color-blue" value="color-blue"></button>
+              </div>
             </div>
           </strong>
           <div className="panel-body">

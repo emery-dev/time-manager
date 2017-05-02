@@ -36,7 +36,6 @@ body {
   margin: 8px 8px 0 0;
 }
 
-
 h1 {
   margin: 10px;
 }
@@ -71,16 +70,31 @@ h3 {
   background-color: #eee;
 }
 
-
-
 .toDoList > .todo-item > .panel-primary > strong > .panel-heading {
   padding: 5px 5px 0 20px;
   cursor: row-resize;
-  background-color: #99dab1
 }
 
-.toDoList > .todo-item > .panel-primary > strong > .panel-heading:nth-of-type(even) {
-  background-color: #96afbb;
+.color-holder {
+  display: inline-block;
+  float: right;
+  margin: 5px 10px 0 10px;
+}
+
+.btncolor:nth-of-type(2) {
+  margin: 0 10px;
+}
+
+.color-blue {
+  background-color: #99C6DA;
+}
+
+.color-red {
+  background-color: #DA9B99;
+}
+
+.color-green {
+  background-color: #99dab1;
 }
 
 .panel-title {

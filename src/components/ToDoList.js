@@ -25,7 +25,8 @@ class ToDoList extends Component {
       type: 'POST',
       data: { times: 60,
               position: 1,
-              todo: 'todo'
+              todo: 'todo',
+              color: 'color-green'
             },
       success: () => {
         this.props.handleSubmit();
@@ -40,7 +41,8 @@ class ToDoList extends Component {
       data: { id: update.id,
               times: update.times,
               position: update.position,
-              todo: update.todo
+              todo: update.todo,
+              color: update.color
             },
       success: () => {
         this.props.handleUpdate();
