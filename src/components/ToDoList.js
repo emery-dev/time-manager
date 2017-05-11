@@ -75,7 +75,7 @@ class ToDoList extends Component {
     return (
       <div className="toDoList">
         <div>
-          <div className="affixable todo-list-button-holder" data-spy="affix" data-offset-top="50">
+          <div className="todo-list-button-holder">
             <button className="btn btn-success" onClick={this.handleSubmit}>new item</button>
             <button className="btn btn-danger delete-all" onClick={this.handleDeleteAll}>delete all</button>
           </div>
