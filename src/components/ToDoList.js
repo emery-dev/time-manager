@@ -6,6 +6,7 @@ class ToDoList extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDeleteAll = this.handleDeleteAll.bind(this);
   }
 
   handleDelete(id) {
@@ -14,6 +15,16 @@ class ToDoList extends Component {
       type: 'DELETE',
       success: () => {
         this.props.handleDelete();
+      }
+    });
+  }
+
+  handleDeleteAll() {
+    $.ajax({
+      url: './../api/todos',
+      type: 'DELETE',
+      success: () => {
+        this.props.handleDelete(); //just refreshing the api
       }
     });
   }
@@ -64,7 +75,10 @@ class ToDoList extends Component {
     return (
       <div className="toDoList">
         <div>
-          <button className="btn btn-success" onClick={this.handleSubmit}>item +</button>
+          <div className="affixable todo-list-button-holder" data-spy="affix" data-offset-top="50">
+            <button className="btn btn-success" onClick={this.handleSubmit}>new item</button>
+            <button className="btn btn-danger delete-all" onClick={this.handleDeleteAll}>delete all</button>
+          </div>
           <div className="top-list-margin"> </div>
           <ul className="list-times">
             <li className="list-item">8am</li>

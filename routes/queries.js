@@ -6,8 +6,6 @@ var options = {
 };
 
 var pgp = require('pg-promise')(options);
-//Come back uncomment here
-//Add to heroku postgres db color column
 var db = pgp({
   host: 'ec2-54-204-0-88.compute-1.amazonaws.com',
   port: 5432,
@@ -30,7 +28,8 @@ module.exports = {
   getSingleTodo: getSingleTodo,
   createTodo: createTodo,
   updateTodo: updateTodo,
-  removeTodo: removeTodo
+  removeTodo: removeTodo,
+  removeAllTodos: removeAllTodos
 };
 
 //GET ALL
@@ -112,6 +111,21 @@ function removeTodo(req, res, next) {
           message: `Removed ${result.rowCount} todo`
         });
       /* jshint ignore:end */
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
+
+//DELETE ALL
+function removeAllTodos(req, res, next) {
+  db.result('delete from todo')
+    .then(function (result) {
+      res.status(200)
+        .json({
+          status: 'success',
+          message: 'deleted all todos'
+        });
     })
     .catch(function (err) {
       return next(err);

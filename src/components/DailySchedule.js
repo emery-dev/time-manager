@@ -31,10 +31,14 @@ class DailySchedule extends Component {
   }
 
   render() {
+    var today = new Date();
+    var day = today.getDay();
+    var month = today.getMonth() + 1;
+    var year = today.getFullYear();
     return (
       <div>
         <Nav />
-        <strong><h1 className="text-center schedule-text">Your Schedule Today</h1></strong>
+        <strong><h1 className="text-center schedule-text">Your Schedule Today, {month}/{day}/{year} </h1></strong>
         <ToDoList items={this.state.today}
                   handleSubmit={this.handleRefresh}
                   handleDelete={this.handleRefresh}

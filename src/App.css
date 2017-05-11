@@ -11,7 +11,7 @@ body {
 
 .log {
   display: block;
-  margin: 45px auto 0;
+  margin: 65px auto 0;
   font-size: 34px;
   padding: 4px 18px;
 }
@@ -19,10 +19,12 @@ body {
 .btn-success {
   float: right;
   font-size: 24px;
+  z-index: 2;
   background-color: #99dab1;
   border-color: #99dab1;
   border-top-left-radius: 0px;
   border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 .btn-danger {
@@ -73,6 +75,22 @@ h3 {
 .toDoList > .todo-item > .panel-primary > strong > .panel-heading {
   padding: 5px 5px 0 20px;
   cursor: row-resize;
+}
+
+.todo-list-button-holder {
+  display: flex;
+  float: right;
+}
+
+.delete-all {
+  float: right;
+  clear: both;
+  margin: 0;
+  z-index: 2;
+  font-size: 24px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .color-holder {
